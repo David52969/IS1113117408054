@@ -1,7 +1,8 @@
+
 /* global $ */
 
 function calcSub(){
-    
+    var total
     var argSubTotal;
     
     if(document.getElementById('salesforce').checked) {
@@ -9,9 +10,11 @@ function calcSub(){
     }
     else {
       argSubTotal = 300;
+      
     }
     
     display(argSubTotal);
+    
 }
 
 function display(parm1){

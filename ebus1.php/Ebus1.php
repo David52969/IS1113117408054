@@ -11,12 +11,30 @@
     
     <body>
         <center>
-            <h4>Select a Product</h4>
-            
+            <h4><strong>Select a Product</strong></h4>
+
             <br/>
             
             <form method="POST" action="ebus2.php">
-              
+                          <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.buttoncalc {border-radius: 12px;}
+.buttonproceed {border-radius: 12px;}
+.buttonclear {border-radius: 12px;}
+.button1 {border-radius: 12px;}
+</style>
+
               <label for="salesforce">
                 <input type="radio" id="salesforce" name="product" checked onClick="disablebtnProceed()"/>
                 SalesForce @ $100
@@ -39,14 +57,22 @@
               
               <br/>
               
+              <label for="total">
+                Total
+                <input type="hidden" id="total" name="total" value="0.00" readonly/>
+              </label>
+    
+              <br/>
               
-              <button type="submit" id="btnProceed" disabled>Add to Shopping Cart</button>
+              <button class= "buttonproceed" type="submit" id="btnProceed" disabled>Add to Shopping Cart</button>
             
             </form>
             
             <br/>
-            <button onClick="calcSub()">Calculate Cost</button>
-            <a role="button" href="ebus1.php">Clear Choice</a>
+            <button class = "buttoncalc" onClick="calcSub()">Calculate Cost</button>
+            <form action="Ebus1.php">
+    <a role="button" href="Ebus1.php">Clear Choice</a>
+</form>
     </center>
     </body>
 </html>

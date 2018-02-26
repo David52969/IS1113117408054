@@ -1,3 +1,19 @@
 .mainheading{
     text-align: center;
 
+.input{padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:100%}
+.section,.code{margin-top:16px!important;margin-bottom:16px!important}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.buttonround {border-radius: 50%;}

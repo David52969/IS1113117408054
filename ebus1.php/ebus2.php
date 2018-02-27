@@ -1,40 +1,88 @@
-<?php
-// Start the session
-session_start();
-?>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>  
 <html>
-    <head>
-        <title>Enter Details</title>
-        
-        <!--jQuery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="ebus2_validator.js"></script>
-    </head>
-    <body>
-        <center>
-        <h4>Please enter your payment details</h4>
-        
-        
-            <form action="ebus3.php" method="POST">
+<head>
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+<body>  
 
-                    <p><label for="user_card">Card Number</label>
-                    <input type="password" id="user_card" placeholder="Card Number" maxlength="12"></p>
-                    <p><label for="user_pin">PIN</label>
-                    <input type="password" id="user_pin" placeholder="Card PIN" maxlength="4"></p>
+<?php
 
-                <button type="submit" id="btnPurchase" disabled>Proceed with Purchase</button>
-              
-            </form>
-            
-            <br/>
-            <button onClick="validateDetails()">Validate</button>
-            </center>
-            <?php
-            // Set session variables
-            $_SESSION["total"] = $_POST["total"];
-            
-            ?>
-        
-    </body>
-</html>
+$nameErr = $emailErr = $genderErr = "";
+$name = $email = $gender = $comment = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed"; 
+    }
+  }
+  
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format"; 
+    }
+  
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+<h2>PHP Form Validation Example</h2>
+<p><span class="error">* required field.</span></p>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+  Name: <input type="text" name="name">
+  <span class="error">* <?php echo $nameErr;?></span>
+  <br><br>
+  E-mail: <input type="text" name="email">
+  <span class="error">* <?php echo $emailErr;?></span>
+  <br><br>
+  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  <br><br>
+  Gender:
+  <input type="radio" name="gender" value="female">Female
+  <input type="radio" name="gender" value="male">Male
+  <span class="error">* <?php echo $genderErr;?></span>
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
+
+<?php
+echo "<h2>Your Details:</h2>";
+echo $name;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $gender;
+?>
+          <form action="ehome.html">
+    <a role="button" href="ehome.html">Home/a>
+</form>
+
+</body>
+</html

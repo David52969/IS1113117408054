@@ -18,7 +18,7 @@
             <form method="POST" action="ebus2.php">
                           <style>
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 20px;

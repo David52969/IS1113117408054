@@ -17,3 +17,24 @@
     cursor: pointer;
 }
 .buttonround {border-radius: 50%;}
+
+.interests {
+  font-size: 20px;
+}
+
+.stuff {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 55px;
+  width: 75%;
+  height: 1000px;
+}
+
+#header {
+  height: 40px;
+  width: 100%;
+  background-color: #ffcccc;
+  position: fixed;
+  z-index: 1;
+}
+

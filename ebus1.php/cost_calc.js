@@ -7,9 +7,13 @@ function calcSub(){
     if(document.getElementById('salesforce').checked) {
       argSubTotal = 100;
     }
-    else {
-      argSubTotal = 300;
+    if(document.getElementById('aws').checked) {
+      argSubTotal = 30;
     }
+    if(document.getElementById('cloud').checked) {
+      argSubTotal = 200;
+    }
+    
     
     display(argSubTotal);
 }

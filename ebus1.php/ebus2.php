@@ -1,4 +1,7 @@
-
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -12,8 +15,11 @@ $name = $email = $gender = $comment =  "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST["name"]);
   $email = test_input($_POST["email"]);
-  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["contact"]);
   $gender = test_input($_POST["gender"]);
+    $_SESSION["total"] = $_POST["total"];
+    ?>
+    <?php
 }
 
 function test_input($data) {
@@ -23,12 +29,14 @@ function test_input($data) {
   return $data;
 }
 ?>
-
+<center>
 <h2>Personal Details</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   Name: <input type="text" name="name">
   <br><br>
   E-mail: <input type="text" name="email">
+  <br><br>
+  Contact Number: <input type="text" name="contact">
   <br><br>
   Comment: <textarea name="comment" rows="5" cols="40"></textarea>
   <br><br>
@@ -48,7 +56,10 @@ echo "<br>";
 echo $comment;
 echo "<br>";
 echo $gender;
-?>
+echo "<br>";
+echo "Total is " . $_SESSION["total"] . ".";
 
+?>
+</center>
 </body>
 </html
